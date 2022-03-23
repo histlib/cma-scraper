@@ -9,7 +9,6 @@ def scrape_cma():
     html_string = response.text
     document = bs4(html_string, "html.parser")
     
-    search_results = document.find_all("div", attrs={"class": "search-result grid-item"})
     search_results_artists = document.find_all("div", attrs={"class": "artists"})
     search_results_titles = document.find_all("div", attrs={"class": "artwork-title"})
     search_results_accession = document.find_all("span", attrs={"class": "accession-number"})
