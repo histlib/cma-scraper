@@ -2,7 +2,8 @@ import pandas as pd
 import requests
 from bs4 import BeautifulSoup as bs4
 
-def scrape_cma(text):
+def scrape_cma():
+    text = input("Enter your search term or terms:")
     url = "https://www.clevelandart.org/art/collection/search?search=" + str(text)
     response = requests.get(url)
     html_string = response.text
@@ -35,4 +36,6 @@ def scrape_cma(text):
     df = pd.DataFrame(list(zip(artist_list,title_list,accession_number,item_url)), columns =["Artist","Title","Accession","URL"])
     df.to_csv("cma_"+str(text)+".csv")
     
-    return df
+    print(df)
+
+scrape_cma()
